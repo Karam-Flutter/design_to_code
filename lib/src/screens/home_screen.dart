@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:design_to_code/src/screens/field_screen.dart';
+import 'package:design_to_code/src/constants/assets.dart';
+import 'package:design_to_code/src/screens/profileScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,135 +12,233 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedNAVIindex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF6F6F6),
-      body: SafeArea(
-          child: Column(
+      backgroundColor: Colors.grey.shade300,
+      body: Stack(
         children: [
-          topStack,
-          SizedBox(
-            height: 150,
+          // Positioned.fill(
+          //     // bottom: 0,
+          //     child: _body1),
+          ListView(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).padding.bottom + 80,
+              top: MediaQuery.of(context).padding.top,
+            ),
+            children: [
+              cellType1(haveImage: false),
+              cellType1(haveImage: true),
+              cellType1(haveImage: false),
+              cellType1(haveImage: true),
+            ],
           ),
-          textFieldEmail,
-          SizedBox(
-            height: 20,
-          ),
-          textFieldPassword,
-          SizedBox(
-            height: 100,
-          ),
-          btnLogin,
         ],
-      )),
+      ),
     );
   }
 
-  Widget get topStack {
+  // Widget get _bottomNavigationBar {
+  //   return Container(
+  //       padding: EdgeInsets.all(7),
+  //       decoration: BoxDecoration(
+  //         color: Colors.white,
+  //         borderRadius: BorderRadius.circular(50),
+  //         boxShadow: [
+  //           BoxShadow(
+  //             color: Colors.grey.withOpacity(0.5),
+  //             spreadRadius: 1,
+  //             blurRadius: 3,
+  //             offset: Offset(1, 3), // changes position of shadow
+  //           ),
+  //         ],
+  //       ),
+  //       width: 200,
+  //       // height: 100,
+  //       child: Row(
+  //         crossAxisAlignment: CrossAxisAlignment.center,
+  //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //         children: [
+  //           Container(
+  //             child: Column(
+  //               children: [
+  //                 Container(
+  //                   padding: EdgeInsets.all(5),
+  //                   decoration: BoxDecoration(
+  //                       color: Color(0xff64A09A),
+  //                       borderRadius: BorderRadius.circular(15)),
+  //                   child: Icon(
+  //                     Icons.home,
+  //                     color: Colors.white,
+  //                     size: 30,
+  //                   ),
+  //                 ),
+  //                 Text('Home'),
+  //               ],
+  //             ),
+  //           ),
+  //           Container(
+  //             child: Column(
+  //               children: [
+  //                 Container(
+  //                   padding: EdgeInsets.all(5),
+  //                   decoration: BoxDecoration(
+  //                       color: Color(0xff64A09A),
+  //                       borderRadius: BorderRadius.circular(15)),
+  //                   child: Icon(
+  //                     Icons.person,
+  //                     color: Colors.white,
+  //                     size: 30,
+  //                   ),
+  //                 ),
+  //                 Text('Profile'),
+  //               ],
+  //             ),
+  //           ),
+  //         ],
+  //       ));
+  // }
+
+  Widget cellType1({required bool haveImage}) {
     return Stack(
       children: [
-        Image.asset('assets/ima/bg.png'),
+        Container(
+          margin: EdgeInsets.all(16),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 1,
+                blurRadius: 3,
+                offset: Offset(1, 3), // changes position of shadow
+              ),
+            ],
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(13),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundImage: Image.asset(
+                                Assets.resourceImaPerson,
+                                width: 40,
+                                height: 40,
+                              ).image,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text("Karam Zeway"),
+                          ],
+                        )
+                      ],
+                    ),
+                    Icon(Icons.power_input_sharp)
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                    "A box shadow is a visual effect used in the Flutter framework that lets you add shadows to any widget. It is a built-in widget that takes",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis),
+                SizedBox(
+                  height: 10,
+                ),
+                if (haveImage)
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(13),
+                      child: Image.asset(Assets.resourceImaCode),
+                    ),
+                  ),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+          ),
+        ),
         Positioned(
-          top: 30,
-          left: 50,
-          child: Text(
-            'LOGIN',
-            style: TextStyle(
-                fontSize: 40, color: Colors.white, fontWeight: FontWeight.bold),
+          bottom: 0,
+          left: 35,
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: Offset(1, 3), // changes position of shadow
+                ),
+              ],
+              color: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(20),
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "1.5k",
+                  style: TextStyle(fontSize: 15),
+                ),
+                SizedBox(width: 10),
+                Image.asset(Assets.resourceImaIconLike)
+              ],
+            ),
           ),
         ),
         Positioned(
           bottom: 0,
           left: 150,
-          child: Image.asset('assets/ima/logo.png'),
-        ),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: Offset(1, 3), // changes position of shadow
+                ),
+              ],
+              color: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(20),
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "250",
+                  style: TextStyle(fontSize: 15),
+                ),
+                SizedBox(width: 10),
+                Image.asset(Assets.resourceImaIconComment)
+              ],
+            ),
+          ),
+        )
       ],
-    );
-  }
-
-  Widget get textFieldEmail {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
-      margin: EdgeInsets.symmetric(horizontal: 25),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(13),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: Offset(1, 3), // changes position of shadow
-          ),
-        ],
-      ),
-      child: TextField(
-        keyboardType: TextInputType.emailAddress,
-        decoration:
-            InputDecoration(border: InputBorder.none, hintText: "Email"),
-      ),
-    );
-  }
-
-  Widget get textFieldPassword {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
-      margin: EdgeInsets.symmetric(horizontal: 25),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(13),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 3,
-            offset: Offset(1, 3), // changes position of shadow
-          ),
-        ],
-      ),
-      child: TextField(
-        obscureText: true,
-        decoration:
-            InputDecoration(border: InputBorder.none, hintText: "Password"),
-      ),
-    );
-  }
-
-  Widget get btnLogin {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => FieldScreen()));
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 1,
-              blurRadius: 3,
-              offset: Offset(1, 3), // changes position of shadow
-            ),
-          ],
-          color: Color(0xffF9E995),
-          borderRadius: BorderRadius.all(
-            Radius.circular(13),
-          ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              "LOGIN",
-              style: TextStyle(fontSize: 25),
-            ),
-            SizedBox(width: 25),
-            Image.asset('assets/ima/icon_login.png')
-          ],
-        ),
-      ),
     );
   }
 }

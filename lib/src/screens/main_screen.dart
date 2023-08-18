@@ -1,6 +1,7 @@
 import 'package:design_to_code/src/constants/assets.dart';
 import 'package:design_to_code/src/screens/home_screen.dart';
 import 'package:design_to_code/src/screens/profileScreen.dart';
+import 'package:design_to_code/src/screens/testnaviBar.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -31,6 +32,7 @@ class _MainScreenState extends State<MainScreen> {
         return HomeScreen();
       case 1:
         return ProfileScreen();
+      
       default:
         return HomeScreen();
     }
@@ -60,7 +62,8 @@ class _MainScreenState extends State<MainScreen> {
             navigationCell(
                 title: "Home", imagePath: Assets.resourceImaHome, index: 0),
             navigationCell(
-                title: "Profile", imagePath: Assets.resourceImaUser, index: 1)
+                title: "Profile", imagePath: Assets.resourceImaUser, index: 1),
+            
           ],
         ));
   }

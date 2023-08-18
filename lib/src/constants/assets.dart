@@ -13,6 +13,10 @@ class Assets {
   /// assets/ima/home.png
   static const String resourceImaHome = "assets/ima/home.png";
 
+  /// Assets for resourceImaHome1
+  /// assets/ima/home1.png
+  static const String resourceImaHome1 = "assets/ima/home1.png";
+
   /// Assets for resourceImaIconComment
   /// assets/ima/icon_comment.png
   static const String resourceImaIconComment = "assets/ima/icon_comment.png";
@@ -29,6 +33,10 @@ class Assets {
   /// assets/ima/logo.png
   static const String resourceImaLogo = "assets/ima/logo.png";
 
+  /// Assets for resourceImaNotiv1
+  /// assets/ima/notiv1.png
+  static const String resourceImaNotiv1 = "assets/ima/notiv1.png";
+
   /// Assets for resourceImaPerson
   /// assets/ima/person.jpeg
   static const String resourceImaPerson = "assets/ima/person.jpeg";
@@ -40,6 +48,14 @@ class Assets {
   /// Assets for resourceImaSave
   /// assets/ima/save.png
   static const String resourceImaSave = "assets/ima/save.png";
+
+  /// Assets for resourceImaSetting1
+  /// assets/ima/setting1.png
+  static const String resourceImaSetting1 = "assets/ima/setting1.png";
+
+  /// Assets for resourceImaShop1
+  /// assets/ima/shop1.png
+  static const String resourceImaShop1 = "assets/ima/shop1.png";
 
   /// Assets for resourceImaUser
   /// assets/ima/user.png

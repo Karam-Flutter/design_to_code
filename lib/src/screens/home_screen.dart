@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:design_to_code/src/constants/assets.dart';
-import 'package:design_to_code/src/screens/profileScreen.dart';
+
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,7 +12,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedNAVIindex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -2,6 +2,8 @@
 
 import 'package:design_to_code/src/constants/assets.dart';
 import 'package:design_to_code/src/screens/editing_screen.dart';
+import 'package:design_to_code/src/screens/testhome.dart';
+import 'package:design_to_code/src/screens/testnaviBar.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -103,6 +105,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       "A box shadow is a visual effect used in the Flutter framework that lets you add shadows to any widget. It is a built-in widget that takes",
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis),
+                  ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TestNaviBar()));
+                      },
+                      child: Text('Test'))
                 ],
               ),
             ),

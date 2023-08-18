@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:design_to_code/src/constants/assets.dart';
-import 'package:design_to_code/src/screens/home_screen.dart';
 import 'package:design_to_code/src/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 

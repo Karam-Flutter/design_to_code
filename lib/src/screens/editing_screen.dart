@@ -38,9 +38,11 @@ class _EdtingScreenState extends State<EdtingScreen> {
                   ),
                 ],
               ),
-              child: Icon(
-                Icons.save,
-                color: Colors.white,
+              child: SafeArea(
+                child: Icon(
+                  Icons.save,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),

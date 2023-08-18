@@ -11,6 +11,7 @@ class _TestProfileState extends State<TestProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade300,
       body: Center(
         child: Text('Profile'),
       ),

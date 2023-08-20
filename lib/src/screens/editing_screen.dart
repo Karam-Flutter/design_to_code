@@ -18,32 +18,25 @@ class _EdtingScreenState extends State<EdtingScreen> {
       appBar: AppBar(
         backgroundColor: Colors.grey.shade400,
         actions: [
-          Padding(
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).padding.bottom + 80,
-              top: MediaQuery.of(context).padding.top,
-            ),
-            child: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: Color(0xff64A09A),
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    offset: Offset(1, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: SafeArea(
-                child: Icon(
-                  Icons.save,
-                  color: Colors.black,
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: Color(0xff64A09A),
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: Offset(1, 3), // changes position of shadow
                 ),
-              ),
+              ],
+            ),
+            child: Icon(
+              Icons.save,
+              color: Colors.white,
             ),
           ),
         ],
@@ -56,7 +49,7 @@ class _EdtingScreenState extends State<EdtingScreen> {
                 height: 40,
               ),
               CircleAvatar(
-                radius: 60,
+                radius: 75,
                 backgroundColor: Colors.grey.shade400,
               ),
               SizedBox(
@@ -122,47 +115,45 @@ class _EdtingScreenState extends State<EdtingScreen> {
                       borderRadius: BorderRadius.circular(13),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "A box shadow is a visual effect used in the Flutter framework that lets you add shadows to any widget. It is a built-in widget that takes ets you add shadows to any widget. It is a built-in widget that takes",
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Text(
-                            "230/255",
-                            style:
-                                TextStyle(color: Colors.black38, fontSize: 10),
-                          )
-                        ],
+                      padding: const EdgeInsets.only(
+                          left: 10.0, right: 10, bottom: 5),
+                      child: TextField(
+                        controller: TextEditingController(
+                            text:
+                                "is used when it is needed to compare the list of objects that a mouse pointer is hovering over between this frame and the last frame. This means entering events, exiting events, and mouse cursors."),
+                        maxLines: 3,
+                        maxLength: 255,
+                        decoration: InputDecoration(border: InputBorder.none),
                       ),
                     ),
                   ),
                 ],
               ),
-              textF(
-                Title: "Name",
-                name: 'Karam Zeway',
+              KZTextField(
+                title: "Name",
+                hint: 'Karam Zeway',
+                icon: Assets.resourceImaUser2,
               ),
-              textF(
-                Title: "Username",
-                name: '@karamzeway',
+              KZTextField(
+                isEnable: false,
+                title: "Username",
+                hint: 'karamzeway',
+                icon: Assets.resourceImaAt,
               ),
-              Opacity(
-                opacity: 0.5,
-                child: textF(
-                  Title: "Email",
-                  name: 'info@KaramZeway.com',
-                ),
+              KZTextField(
+                title: "Email",
+                hint: 'info@KaramZeway.com',
+                icon: Assets.resourceImaEmail,
               ),
               // Bo chi l vere Row qabil naket
-              textF(Title: 'Birthday', name: '1990/05/01'),
+              KZTextField(
+                title: 'Birthday',
+                hint: '1990/05/01',
+                icon: Assets.resourceImaBirth,
+                onTap: () {
+                  print("Happy Birth Day");
+                },
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -211,34 +202,33 @@ class _EdtingScreenState extends State<EdtingScreen> {
   }
 }
 
-class textF extends StatelessWidget {
-  const textF({
+class KZTextField extends StatelessWidget {
+  const KZTextField({
     super.key,
-    required this.Title,
-    required this.name,
+    required this.title,
     this.icon,
+    this.hint,
+    this.controller,
+    this.isEnable = true,
+    this.onTap,
   });
-  final String Title;
-  final String name;
-  final icon;
+  final String title;
+  final TextEditingController? controller;
+  final String? icon;
+  final String? hint;
+  final bool isEnable;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.start,
-      // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsets.only(right: 16, left: 25, bottom: 0, top: 5),
               child: Row(
                 children: [
-                  Text(Title),
-                  // SizedBox(
-                  //   width: 50,
-                  // ),
+                  Text(title),
                 ],
               ),
             ),
@@ -260,16 +250,31 @@ class textF extends StatelessWidget {
             borderRadius: BorderRadius.circular(13),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(13.0),
+            padding: const EdgeInsets.symmetric(horizontal: 13),
             child: Row(
               children: [
-                Column(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
+                if (icon != null) ...[
+                  Image.asset(
+                    icon!,
+                    width: 18,
+                    height: 18,
+                    color:
+                        isEnable ? Colors.black : Colors.black.withOpacity(0.5),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                ],
+                Expanded(
+                  child: TextField(
+                    enabled: isEnable,
+                    controller: TextEditingController(),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: hint,
+                      hintStyle: TextStyle(color: Colors.black26),
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),

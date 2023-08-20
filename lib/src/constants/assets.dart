@@ -1,13 +1,25 @@
 class Assets {
   Assets._();
   
+  /// Assets for resourceImaAt
+  /// assets/ima/at.png
+  static const String resourceImaAt = "assets/ima/at.png";
+
   /// Assets for resourceImaBg
   /// assets/ima/bg.png
   static const String resourceImaBg = "assets/ima/bg.png";
 
+  /// Assets for resourceImaBirth
+  /// assets/ima/birth.png
+  static const String resourceImaBirth = "assets/ima/birth.png";
+
   /// Assets for resourceImaCode
   /// assets/ima/code.jpeg
   static const String resourceImaCode = "assets/ima/code.jpeg";
+
+  /// Assets for resourceImaEmail
+  /// assets/ima/email.png
+  static const String resourceImaEmail = "assets/ima/email.png";
 
   /// Assets for resourceImaHome
   /// assets/ima/home.png
@@ -60,4 +72,8 @@ class Assets {
   /// Assets for resourceImaUser
   /// assets/ima/user.png
   static const String resourceImaUser = "assets/ima/user.png";
+
+  /// Assets for resourceImaUser2
+  /// assets/ima/user2.png
+  static const String resourceImaUser2 = "assets/ima/user2.png";
 }

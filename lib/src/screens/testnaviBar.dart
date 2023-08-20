@@ -50,7 +50,7 @@ class _TestNaviBarState extends State<TestNaviBar> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Container(
-        child: Row(
+        child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             _navibot(title: 'HOME', pathima: Assets.resourceImaHome1, index: 0),
@@ -81,23 +81,37 @@ class _TestNaviBarState extends State<TestNaviBar> {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            color: Colors.white24,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(pathima,
-                  color: isdo
-                      ? const Color.fromARGB(255, 143, 236, 244)
-                      : Color.fromARGB(53, 255, 255, 255)),
-              Text(
-                title,
-                style: TextStyle(
-                    color:
-                        isdo ? Colors.white : Color.fromARGB(53, 255, 255, 255),
-                    fontSize: 7),
+              Container(
+                width: 3,
+                height: 20,
+                color: isdo
+                    ? Color.fromARGB(112, 143, 236, 244)
+                    : Color.fromARGB(0, 255, 255, 255),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Column(
+                children: [
+                  Image.asset(
+                    pathima,
+                    color: isdo
+                        ? const Color.fromARGB(255, 143, 236, 244)
+                        : Color.fromARGB(53, 255, 255, 255),
+                  ),
+                  Text(
+                    title,
+                    style: TextStyle(
+                        color: isdo
+                            ? Colors.white
+                            : Color.fromARGB(53, 255, 255, 255),
+                        fontSize: 7),
+                  ),
+                ],
               ),
             ],
           ),

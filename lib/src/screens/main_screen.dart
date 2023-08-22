@@ -1,4 +1,5 @@
 import 'package:design_to_code/src/constants/assets.dart';
+import 'package:design_to_code/src/screens/create_post.dart';
 import 'package:design_to_code/src/screens/home_screen.dart';
 import 'package:design_to_code/src/screens/profileScreen.dart';
 import 'package:design_to_code/src/screens/testnaviBar.dart';
@@ -32,7 +33,9 @@ class _MainScreenState extends State<MainScreen> {
         return HomeScreen();
       case 1:
         return ProfileScreen();
-      
+      case 2:
+        return CreatePost();
+
       default:
         return HomeScreen();
     }
@@ -62,8 +65,9 @@ class _MainScreenState extends State<MainScreen> {
             navigationCell(
                 title: "Home", imagePath: Assets.resourceImaHome, index: 0),
             navigationCell(
+                title: "Create", imagePath: Assets.resourceImaAdd, index: 2),
+            navigationCell(
                 title: "Profile", imagePath: Assets.resourceImaUser, index: 1),
-            
           ],
         ));
   }

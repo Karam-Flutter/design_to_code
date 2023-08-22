@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:design_to_code/src/constants/assets.dart';
+import 'package:design_to_code/src/screens/privew_post.dart';
 
 import 'package:flutter/material.dart';
 
@@ -149,21 +150,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                    "A box shadow is a visual effect used in the Flutter framework that lets you add shadows to any widget. It is a built-in widget that takes",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PrivewPost()),
+                    );
+                  },
+                  child: Text(
+                      "A box shadow is a visual effect used in the Flutter framework that lets you add shadows to any widget. It is a built-in widget that takes",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis),
+                ),
                 SizedBox(
                   height: 10,
                 ),
                 if (haveImage)
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(13),
-                      child: Image.asset(Assets.resourceImaCode),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PrivewPost()),
+                      );
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(13),
+                        child: Image.asset(Assets.resourceImaCode),
+                      ),
                     ),
                   ),
                 SizedBox(
@@ -232,7 +249,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(fontSize: 15),
                 ),
                 SizedBox(width: 10),
-                Image.asset(Assets.resourceImaIconComment)
+                Image.asset(
+                  Assets.resourceImaIconComment,
+                  scale: 10,
+                )
               ],
             ),
           ),

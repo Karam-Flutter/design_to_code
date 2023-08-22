@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:design_to_code/src/constants/assets.dart';
+import 'package:design_to_code/src/models/damy_data.dart';
 import 'package:design_to_code/src/screens/editing_screen.dart';
 import 'package:design_to_code/src/screens/testhome.dart';
 import 'package:design_to_code/src/screens/testnaviBar.dart';
@@ -28,18 +29,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 left: 135,
                 child: CircleAvatar(
                   radius: 80,
-                  backgroundImage: Image.asset(
-                    Assets.resourceImaPerson,
-                    width: 60,
-                    height: 60,
-                  ).image,
+                  backgroundImage: myUser.avatarUrl == null
+                      ? null
+                      : Image.network(
+                          myUser.avatarUrl!,
+                          width: 60,
+                          height: 60,
+                        ).image,
                 ),
               ),
               Positioned(
                 top: 290,
                 left: 135,
                 child: Text(
-                  'Karam Zeway',
+                  myUser.name ?? "N/A",
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -47,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 top: 320,
                 left: 165,
                 child: Text(
-                  '@karamzeway',
+                  myUser.username ?? "A/N",
                   style: TextStyle(fontSize: 15, color: Colors.black45),
                 ),
               ),
@@ -101,18 +104,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
-                      "A box shadow is a visual effect used in the Flutter framework that lets you add shadows to any widget. It is a built-in widget that takes",
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TestNaviBar()));
-                      },
-                      child: Text('Test'))
+                  Text(myUser.bio ?? '',
+                      maxLines: 3, overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),

@@ -1,9 +1,25 @@
 class Assets {
   Assets._();
   
+  /// Assets for resourceImaAdd
+  /// assets/ima/add.png
+  static const String resourceImaAdd = "assets/ima/add.png";
+
+  /// Assets for resourceImaAdd02
+  /// assets/ima/add02.png
+  static const String resourceImaAdd02 = "assets/ima/add02.png";
+
+  /// Assets for resourceImaAddPhoto
+  /// assets/ima/add-photo.png
+  static const String resourceImaAddPhoto = "assets/ima/add-photo.png";
+
   /// Assets for resourceImaAt
   /// assets/ima/at.png
   static const String resourceImaAt = "assets/ima/at.png";
+
+  /// Assets for resourceImaBack
+  /// assets/ima/back.png
+  static const String resourceImaBack = "assets/ima/back.png";
 
   /// Assets for resourceImaBg
   /// assets/ima/bg.png
@@ -16,6 +32,10 @@ class Assets {
   /// Assets for resourceImaCode
   /// assets/ima/code.jpeg
   static const String resourceImaCode = "assets/ima/code.jpeg";
+
+  /// Assets for resourceImaDots
+  /// assets/ima/dots.png
+  static const String resourceImaDots = "assets/ima/dots.png";
 
   /// Assets for resourceImaEmail
   /// assets/ima/email.png
@@ -41,6 +61,10 @@ class Assets {
   /// assets/ima/icon_login.png
   static const String resourceImaIconLogin = "assets/ima/icon_login.png";
 
+  /// Assets for resourceImaLike2
+  /// assets/ima/like2.png
+  static const String resourceImaLike2 = "assets/ima/like2.png";
+
   /// Assets for resourceImaLogo
   /// assets/ima/logo.png
   static const String resourceImaLogo = "assets/ima/logo.png";
@@ -61,9 +85,17 @@ class Assets {
   /// assets/ima/save.png
   static const String resourceImaSave = "assets/ima/save.png";
 
+  /// Assets for resourceImaSend
+  /// assets/ima/send.png
+  static const String resourceImaSend = "assets/ima/send.png";
+
   /// Assets for resourceImaSetting1
   /// assets/ima/setting1.png
   static const String resourceImaSetting1 = "assets/ima/setting1.png";
+
+  /// Assets for resourceImaShare
+  /// assets/ima/share.png
+  static const String resourceImaShare = "assets/ima/share.png";
 
   /// Assets for resourceImaShop1
   /// assets/ima/shop1.png
@@ -76,4 +108,8 @@ class Assets {
   /// Assets for resourceImaUser2
   /// assets/ima/user2.png
   static const String resourceImaUser2 = "assets/ima/user2.png";
+
+  /// Assets for resourceImaWorld
+  /// assets/ima/world.png
+  static const String resourceImaWorld = "assets/ima/world.png";
 }

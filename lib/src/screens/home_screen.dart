@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:design_to_code/src/constants/assets.dart';
+import 'package:design_to_code/src/models/damy_data.dart';
+import 'package:design_to_code/src/models/post_model.dart';
 import 'package:design_to_code/src/screens/privew_post.dart';
 
 import 'package:flutter/material.dart';
@@ -28,10 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
               top: MediaQuery.of(context).padding.top,
             ),
             children: [
-              cellType1(haveImage: false),
-              cellType1(haveImage: true),
-              cellType1(haveImage: false),
-              cellType1(haveImage: true),
+              cellType1(post: myPosts[0]),
+              cellType1(post: myPosts[1]),
+              cellType1(post: myPosts[2]),
             ],
           ),
         ],
@@ -39,68 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Widget get _bottomNavigationBar {
-  //   return Container(
-  //       padding: EdgeInsets.all(7),
-  //       decoration: BoxDecoration(
-  //         color: Colors.white,
-  //         borderRadius: BorderRadius.circular(50),
-  //         boxShadow: [
-  //           BoxShadow(
-  //             color: Colors.grey.withOpacity(0.5),
-  //             spreadRadius: 1,
-  //             blurRadius: 3,
-  //             offset: Offset(1, 3), // changes position of shadow
-  //           ),
-  //         ],
-  //       ),
-  //       width: 200,
-  //       // height: 100,
-  //       child: Row(
-  //         crossAxisAlignment: CrossAxisAlignment.center,
-  //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //         children: [
-  //           Container(
-  //             child: Column(
-  //               children: [
-  //                 Container(
-  //                   padding: EdgeInsets.all(5),
-  //                   decoration: BoxDecoration(
-  //                       color: Color(0xff64A09A),
-  //                       borderRadius: BorderRadius.circular(15)),
-  //                   child: Icon(
-  //                     Icons.home,
-  //                     color: Colors.white,
-  //                     size: 30,
-  //                   ),
-  //                 ),
-  //                 Text('Home'),
-  //               ],
-  //             ),
-  //           ),
-  //           Container(
-  //             child: Column(
-  //               children: [
-  //                 Container(
-  //                   padding: EdgeInsets.all(5),
-  //                   decoration: BoxDecoration(
-  //                       color: Color(0xff64A09A),
-  //                       borderRadius: BorderRadius.circular(15)),
-  //                   child: Icon(
-  //                     Icons.person,
-  //                     color: Colors.white,
-  //                     size: 30,
-  //                   ),
-  //                 ),
-  //                 Text('Profile'),
-  //               ],
-  //             ),
-  //           ),
-  //         ],
-  //       ));
-  // }
-
-  Widget cellType1({required bool haveImage}) {
+  Widget cellType1({required PostModel post}) {
     return Stack(
       children: [
         Container(
@@ -121,6 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -139,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               width: 10,
                             ),
-                            Text("Karam Zeway"),
+                            Text(myUser.name!),
                           ],
                         )
                       ],
@@ -157,15 +98,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       MaterialPageRoute(builder: (context) => PrivewPost()),
                     );
                   },
-                  child: Text(
-                      "A box shadow is a visual effect used in the Flutter framework that lets you add shadows to any widget. It is a built-in widget that takes",
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis),
+                  child: Text(post.text ?? '',
+                      maxLines: 2, overflow: TextOverflow.ellipsis),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                if (haveImage)
+                if (post.imageUrl != null)
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -179,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(13),
-                        child: Image.asset(Assets.resourceImaCode),
+                        child: Image.network(post.imageUrl!),
                       ),
                     ),
                   ),
@@ -213,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "1.5k",
+                  post.likesUserUID?.length.toString() ?? '0',
                   style: TextStyle(fontSize: 15),
                 ),
                 SizedBox(width: 10),
@@ -245,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "250",
+                  post.comments?.length.toString() ?? '0',
                   style: TextStyle(fontSize: 15),
                 ),
                 SizedBox(width: 10),

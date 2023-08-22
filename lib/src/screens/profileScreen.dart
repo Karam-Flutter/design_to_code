@@ -2,6 +2,7 @@
 
 import 'package:design_to_code/src/constants/assets.dart';
 import 'package:design_to_code/src/models/damy_data.dart';
+import 'package:design_to_code/src/models/users_model.dart';
 import 'package:design_to_code/src/screens/editing_screen.dart';
 import 'package:design_to_code/src/screens/testhome.dart';
 import 'package:design_to_code/src/screens/testnaviBar.dart';
@@ -50,7 +51,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 top: 320,
                 left: 165,
                 child: Text(
-                  myUser.username ?? "A/N",
+                  '@${myUser.username ?? "A/N"}',
+                  style: TextStyle(fontSize: 15, color: Colors.black45),
+                ),
+              ),
+              Positioned(
+                top: 260,
+                left: 165,
+                child: Text(
+                  '@${myUser.username ?? "A/N"}',
                   style: TextStyle(fontSize: 15, color: Colors.black45),
                 ),
               ),
@@ -77,39 +86,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
           SizedBox(
             height: 30,
           ),
-          Container(
-            margin: EdgeInsets.all(16),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 3,
-                  offset: Offset(1, 3), // changes position of shadow
-                ),
-              ],
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(13),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "BIO",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+          if (myUser.bio != null)
+            Container(
+              margin: EdgeInsets.all(16),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 1,
+                    blurRadius: 3,
+                    offset: Offset(1, 3), // changes position of shadow
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(myUser.bio ?? '',
-                      maxLines: 3, overflow: TextOverflow.ellipsis),
                 ],
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(13),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "BIO",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(myUser.bio ?? '',
+                        maxLines: 3, overflow: TextOverflow.ellipsis),
+                  ],
+                ),
               ),
             ),
-          ),
         ],
       ),
     );
